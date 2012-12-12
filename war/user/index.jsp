@@ -13,7 +13,9 @@ forme {
  padding: 0 10px;
  }
 </style>
+</head>
 
+<body>
 <ul>
 <c:forEach var="e" items="${f:errors()}">
  <li>${f:h(e)}</li>
@@ -26,6 +28,6 @@ forme {
  <p>メアド: <input type="text" name="email"></p>
  <p><input type="submit" value="登録する"></p>
 </form>
-</ul>
-</head>
+<a href="/user/list">ユーザー一覧を見る</a>
+</body>
 </html>

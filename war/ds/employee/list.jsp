@@ -3,12 +3,32 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="f" uri="http://www.slim3.org/functions"%>
 
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>ds employee All</title>
-</head>
-<body>
-<p>Hello ds employee All !!!</p>
-</body>
-</html>
+<!DOCTYPE html>
+
+<meta charset=utf-8" >
+<title>employee list</title>
+<style>
+table {
+  border-collapse: collapse;
+}
+th,td {
+  border: solid 1px #9999;
+  padding; 4px;
+}
+</style>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>名前</th>
+    <th>入社日</th>
+    <th>月給</th>
+  </tr>
+<c:forEach var="emp" items="${employees}">
+  <tr>
+    <td>${emp.key.id}</td>
+    <td>${emp.name}</td>  
+    <td>${emp.hireDate}</td>  
+    <td>${emp.salary}円</td>
+  </tr>
+</c:forEach>
+</table>  

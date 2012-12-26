@@ -14,7 +14,7 @@ public class Employee implements Serializable {
     
     private String name;
     private Date hireDate;
-    private Long deptId;
+    private Long \;
     private boolean training;
     private int salary;
     private List<Long> credentialIds;

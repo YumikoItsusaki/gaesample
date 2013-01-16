@@ -8,6 +8,7 @@ import org.slim3.controller.validator.Validators;
 import org.slim3.datastore.Datastore;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Transaction;
 
 public class UpdateSalaryController extends Controller {
 
@@ -26,13 +27,18 @@ public class UpdateSalaryController extends Controller {
         int salary = asInteger("salary");
         
         Key key = Datastore.createKey(Employee.class, id);
-        
-        
-        
-        Employee e = Datastore.get(Employee.class, key);
-        e.setSalary(salary);
-        Datastore.put(e);
-        
+        Transaction tx = Datastore.beginTransaction();
+        try {
+            Employee e = Datastore.get(tx,Employee.class, key);
+            e.setSalary(salary);
+            Datastore.put(tx,e);
+            tx.commit();
+        } finally {
+            if (tx.isActive()){
+                tx.rollback();
+            }
+        }
+         
         return forward("updateSalary.jsp");
     }
 }

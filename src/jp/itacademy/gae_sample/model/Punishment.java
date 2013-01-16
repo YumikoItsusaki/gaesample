@@ -2,7 +2,6 @@ package jp.itacademy.gae_sample.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -10,73 +9,26 @@ import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
 @Model(schemaVersion = 1)
-public class Employee implements Serializable {
+public class Punishment implements Serializable {
     
-    private String name;
-    private Date hireDate;
-    private Long deptId;
-    private boolean training;
-    private int salary;
-    private List<Long> credentialIds;
-    private int punishmentCount;
+    private Date date;
     
-    
-    
-
-    public int getPunishmentCount() {
-        return punishmentCount;
+    private String desc;
+     
+    public Date getDate() {
+        return date;
     }
 
-    public void setPunishmentCount(int punishmentCount) {
-        this.punishmentCount = punishmentCount;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getName() {
-        return name;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getHireDate() {
-        return hireDate;
-    }
-
-    public void setHireDate(Date hireDate) {
-        this.hireDate = hireDate;
-    }
-
-    public Long getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Long deptId) {
-        this.deptId = deptId;
-    }
-
-    public boolean isTraining() {
-        return training;
-    }
-
-    public void setTraining(boolean training) {
-        this.training = training;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public List<Long> getCredentialIds() {
-        return credentialIds;
-    }
-
-    public void setCredentialIds(List<Long> credentialIds) {
-        this.credentialIds = credentialIds;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     private static final long serialVersionUID = 1L;
@@ -144,7 +96,7 @@ public class Employee implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        Employee other = (Employee) obj;
+        Punishment other = (Punishment) obj;
         if (key == null) {
             if (other.key != null) {
                 return false;
